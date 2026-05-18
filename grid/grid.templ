@@ -1,0 +1,13 @@
+package grid
+
+templ Grid(props GridProps) {
+	<div class={ props.Class } { gridDataAttrs(props.Cols)... }>
+		{ children... }
+	</div>
+}
+
+templ GridCol(props GridColProps) {
+	<div class={ props.Class } { gridColDataAttrs(props)... }>
+		{ children... }
+	</div>
+}

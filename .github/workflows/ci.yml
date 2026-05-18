@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ["1.23", "1.24"]
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: ${{ matrix.go-version }}
+          cache: true
+
+      - name: Run preflight
+        env:
+          PREFLIGHT_RUN_RACE: ${{ matrix.go-version == '1.24' && '1' || '0' }}
+        run: bash ./scripts/preflight.sh
+
+      - name: Coverage
+        if: matrix.go-version == '1.24'
+        run: go test ./... -coverprofile=coverage.out
+
+      - name: Upload coverage
+        if: github.event_name == 'push' && matrix.go-version == '1.24'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: coverage
+          path: coverage.out

@@ -1,0 +1,26 @@
+package block
+
+import "github.com/fastygo/base/utils"
+
+templ Block(props BlockProps) {
+	switch utils.ResolveTag(props.Tag, "div", utils.TagGroupLayout) {
+		case "section":
+			<section class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</section>
+		case "article":
+			<article class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</article>
+		case "aside":
+			<aside class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</aside>
+		case "header":
+			<header class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</header>
+		case "footer":
+			<footer class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</footer>
+		case "main":
+			<main class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</main>
+		case "nav":
+			<nav class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</nav>
+		case "figure":
+			<figure class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</figure>
+		default:
+			<div class={ props.Class } { blockAttrs(props.ID)... }>{ children... }</div>
+	}
+}

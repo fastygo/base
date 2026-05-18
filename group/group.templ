@@ -1,0 +1,28 @@
+package group
+
+import "github.com/fastygo/base/utils"
+
+templ Group(props GroupProps) {
+	switch utils.ResolveTag(props.Tag, "div", utils.TagGroupGroup) {
+		case "section":
+			<section class={ props.Class } data-grow?={ props.Grow }>{ children... }</section>
+		case "article":
+			<article class={ props.Class } data-grow?={ props.Grow }>{ children... }</article>
+		case "aside":
+			<aside class={ props.Class } data-grow?={ props.Grow }>{ children... }</aside>
+		case "header":
+			<header class={ props.Class } data-grow?={ props.Grow }>{ children... }</header>
+		case "footer":
+			<footer class={ props.Class } data-grow?={ props.Grow }>{ children... }</footer>
+		case "main":
+			<main class={ props.Class } data-grow?={ props.Grow }>{ children... }</main>
+		case "nav":
+			<nav class={ props.Class } data-grow?={ props.Grow }>{ children... }</nav>
+		case "figure":
+			<figure class={ props.Class } data-grow?={ props.Grow }>{ children... }</figure>
+		case "fieldset":
+			<fieldset class={ props.Class } data-grow?={ props.Grow }>{ children... }</fieldset>
+		default:
+			<div class={ props.Class } data-grow?={ props.Grow }>{ children... }</div>
+	}
+}

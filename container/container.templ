@@ -1,0 +1,14 @@
+package container
+
+import "github.com/fastygo/base/utils"
+
+templ Container(props ContainerProps) {
+	switch utils.ResolveTag(props.Tag, "div", utils.TagGroupContainer) {
+		case "main":
+			<main class={ props.Class }>{ children... }</main>
+		case "section":
+			<section class={ props.Class }>{ children... }</section>
+		default:
+			<div class={ props.Class }>{ children... }</div>
+	}
+}

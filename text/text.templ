@@ -1,0 +1,36 @@
+package text
+
+import "github.com/fastygo/base/utils"
+
+templ Text(props TextProps, value string) {
+	switch utils.ResolveTag(props.Tag, "p", utils.TagGroupText) {
+		case "span":
+			<span class={ props.Class }>{ value }</span>
+		case "small":
+			<small class={ props.Class }>{ value }</small>
+		case "time":
+			<time class={ props.Class }>{ value }</time>
+		case "em":
+			<em class={ props.Class }>{ value }</em>
+		case "strong":
+			<strong class={ props.Class }>{ value }</strong>
+		case "blockquote":
+			<blockquote class={ props.Class }>{ value }</blockquote>
+		case "figcaption":
+			<figcaption class={ props.Class }>{ value }</figcaption>
+		case "cite":
+			<cite class={ props.Class }>{ value }</cite>
+		case "abbr":
+			<abbr class={ props.Class }>{ value }</abbr>
+		case "address":
+			<address class={ props.Class }>{ value }</address>
+		case "pre":
+			<pre class={ props.Class }>{ value }</pre>
+		case "code":
+			<code class={ props.Class }>{ value }</code>
+		case "mark":
+			<mark class={ props.Class }>{ value }</mark>
+		default:
+			<p class={ props.Class }>{ value }</p>
+	}
+}

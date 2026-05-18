@@ -1,0 +1,59 @@
+package table
+
+templ Table(props TableProps) {
+	<table class={ props.Class } { tableAttrs(props)... }>
+		{ children... }
+	</table>
+}
+
+templ TableCaption(props TableCaptionProps) {
+	<caption class={ props.Class }>
+		{ children... }
+	</caption>
+}
+
+templ TableHead(props TableSectionProps) {
+	<thead class={ props.Class }>
+		{ children... }
+	</thead>
+}
+
+templ TableBody(props TableSectionProps) {
+	<tbody class={ props.Class }>
+		{ children... }
+	</tbody>
+}
+
+templ TableFoot(props TableSectionProps) {
+	<tfoot class={ props.Class }>
+		{ children... }
+	</tfoot>
+}
+
+templ TableRow(props TableRowProps) {
+	<tr class={ props.Class }>
+		{ children... }
+	</tr>
+}
+
+templ TableHeadCell(props TableCellProps) {
+	<th class={ props.Class } { tableCellAttrs(props, true)... }>
+		{ children... }
+	</th>
+}
+
+templ TableCell(props TableCellProps) {
+	<td class={ props.Class } { tableCellAttrs(props, false)... }>
+		{ children... }
+	</td>
+}
+
+templ TableColGroup(props TableColGroupProps) {
+	<colgroup class={ props.Class } { spanAttrs(props.Span)... }>
+		{ children... }
+	</colgroup>
+}
+
+templ TableCol(props TableColProps) {
+	<col class={ props.Class } { spanAttrs(props.Span)... }/>
+}

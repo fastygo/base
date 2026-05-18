@@ -1,0 +1,95 @@
+package field
+
+import "strconv"
+
+templ Field(props FieldProps) {
+	if props.Label != "" || props.Hint != "" || props.Error != "" {
+		<div class={ props.WrapperClass }>
+			if props.Label != "" {
+				<label for={ fieldID(props) } class={ props.LabelClass }>{ props.Label }</label>
+			}
+			@FieldControl(props)
+			if props.Hint != "" {
+				<small class={ props.HintClass }>{ props.Hint }</small>
+			}
+			if props.Error != "" {
+				<span role="alert" class={ props.ErrorClass }>{ props.Error }</span>
+			}
+		</div>
+	} else {
+		@FieldControl(props)
+	}
+}
+
+templ FieldControl(props FieldProps) {
+	switch props.Component {
+		case "button":
+			<button
+				id={ fieldID(props) }
+				name={ props.Name }
+				type="button"
+				class={ props.Class }
+				disabled?={ props.Disabled }
+				value={ props.Value }
+				{ fieldAttrs(props)... }
+			>
+				{ props.Value }
+			</button>
+		case "textarea":
+			<textarea
+				id={ fieldID(props) }
+				name={ props.Name }
+				class={ props.Class }
+				rows={ strconv.Itoa(fieldRows(props.Rows)) }
+				placeholder={ props.Placeholder }
+				disabled?={ props.Disabled }
+				{ fieldAttrs(props)... }
+			>{ props.Value }</textarea>
+		case "select":
+			<select
+				id={ fieldID(props) }
+				name={ props.Name }
+				class={ props.Class }
+				disabled?={ props.Disabled }
+				{ fieldAttrs(props)... }
+			>
+				for _, opt := range props.Options {
+					<option value={ opt.Value } selected?={ opt.Value == props.Value }>{ opt.Label }</option>
+				}
+			</select>
+		default:
+			if props.Type == "checkbox" && props.Switch {
+				<input
+					id={ fieldID(props) }
+					name={ props.Name }
+					type={ fieldInputType(props.Type) }
+					class={ props.Class }
+					placeholder={ props.Placeholder }
+					value={ props.Value }
+					min={ props.Min }
+					max={ props.Max }
+					autocomplete={ props.Autocomplete }
+					checked?={ props.Checked }
+					disabled?={ props.Disabled }
+					required?={ props.Required }
+					{ fieldAttrs(props)... }
+				/>
+			} else {
+				<input
+					id={ fieldID(props) }
+					name={ props.Name }
+					type={ fieldInputType(props.Type) }
+					class={ props.Class }
+					placeholder={ props.Placeholder }
+					value={ props.Value }
+					min={ props.Min }
+					max={ props.Max }
+					autocomplete={ props.Autocomplete }
+					checked?={ props.Checked }
+					disabled?={ props.Disabled }
+					required?={ props.Required }
+					{ fieldAttrs(props)... }
+				/>
+			}
+	}
+}

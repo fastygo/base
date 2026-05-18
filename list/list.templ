@@ -1,0 +1,28 @@
+package list
+
+templ List(props ListProps) {
+	switch listTag(props.Tag) {
+		case "ol":
+			<ol class={ props.Class }>
+				{ children... }
+			</ol>
+		case "dl":
+			<dl class={ props.Class }>
+				{ children... }
+			</dl>
+		case "menu":
+			<menu class={ props.Class }>
+				{ children... }
+			</menu>
+		default:
+			<ul class={ props.Class }>
+				{ children... }
+			</ul>
+	}
+}
+
+templ ListItem(props ListItemProps) {
+	<li class={ props.Class } { listItemAttrs(props)... }>
+		{ children... }
+	</li>
+}

@@ -1,0 +1,19 @@
+package description
+
+templ DescriptionList(props DescriptionListProps) {
+	<dl class={ props.Class }>
+		{ children... }
+	</dl>
+}
+
+templ DescriptionTerm(props DescriptionTermProps) {
+	<dt class={ props.Class }>
+		{ children... }
+	</dt>
+}
+
+templ DescriptionDetails(props DescriptionDetailsProps) {
+	<dd class={ props.Class }>
+		{ children... }
+	</dd>
+}

@@ -1,0 +1,12 @@
+package image
+
+templ Image(props ImageProps) {
+	<img
+		src={ props.Src }
+		alt={ props.Alt }
+		width={ props.Width }
+		height={ props.Height }
+		loading={ imageLoading(props.Loading) }
+		class={ props.Class }
+	/>
+}

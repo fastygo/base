@@ -1,0 +1,7 @@
+package meter
+
+templ Meter(props MeterProps) {
+	<meter class={ props.Class } { meterAttrs(props)... }>
+		{ props.Value }
+	</meter>
+}

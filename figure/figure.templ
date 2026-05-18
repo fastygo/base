@@ -1,0 +1,13 @@
+package figure
+
+templ Figure(props FigureProps) {
+	<figure class={ props.Class }>
+		{ children... }
+	</figure>
+}
+
+templ FigureCaption(props FigureCaptionProps) {
+	<figcaption class={ props.Class }>
+		{ children... }
+	</figcaption>
+}

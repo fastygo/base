@@ -1,0 +1,30 @@
+package stack
+
+import "github.com/fastygo/base/utils"
+
+templ Stack(props StackProps) {
+	switch utils.ResolveTag(props.Tag, "div", utils.TagGroupStack) {
+		case "section":
+			<section class={ props.Class }>{ children... }</section>
+		case "article":
+			<article class={ props.Class }>{ children... }</article>
+		case "aside":
+			<aside class={ props.Class }>{ children... }</aside>
+		case "header":
+			<header class={ props.Class }>{ children... }</header>
+		case "footer":
+			<footer class={ props.Class }>{ children... }</footer>
+		case "main":
+			<main class={ props.Class }>{ children... }</main>
+		case "nav":
+			<nav class={ props.Class }>{ children... }</nav>
+		case "figure":
+			<figure class={ props.Class }>{ children... }</figure>
+		case "ul":
+			<ul class={ props.Class }>{ children... }</ul>
+		case "ol":
+			<ol class={ props.Class }>{ children... }</ol>
+		default:
+			<div class={ props.Class }>{ children... }</div>
+	}
+}

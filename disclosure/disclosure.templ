@@ -1,0 +1,13 @@
+package disclosure
+
+templ Disclosure(props DisclosureProps) {
+	<details class={ props.Class } open?={ props.Open }>
+		{ children... }
+	</details>
+}
+
+templ DisclosureSummary(props DisclosureSummaryProps) {
+	<summary class={ props.Class }>
+		{ children... }
+	</summary>
+}
