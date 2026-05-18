@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ["1.23", "1.24"]
+        go-version: ["1.24"]
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
@@ -25,15 +25,14 @@ jobs:
 
       - name: Run preflight
         env:
-          PREFLIGHT_RUN_RACE: ${{ matrix.go-version == '1.24' && '1' || '0' }}
+          PREFLIGHT_RUN_RACE: "1"
         run: bash ./scripts/preflight.sh
 
       - name: Coverage
-        if: matrix.go-version == '1.24'
         run: go test ./... -coverprofile=coverage.out
 
       - name: Upload coverage
-        if: github.event_name == 'push' && matrix.go-version == '1.24'
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: coverage
