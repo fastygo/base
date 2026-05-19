@@ -17,3 +17,11 @@ func listItemAttrs(p ListItemProps) templ.Attributes {
 	}
 	return templ.Attributes{"value": strconv.Itoa(p.Value)}
 }
+
+func listItemMergedAttrs(p ListItemProps) templ.Attributes {
+	return utils.MergeAttrs(listItemAttrs(p), p.Attrs)
+}
+
+func listSpreadAttrs(props ListProps) templ.Attributes {
+	return utils.MergeAttrs(templ.Attributes{}, props.Attrs)
+}

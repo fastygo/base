@@ -5,10 +5,10 @@ import "github.com/fastygo/base/utils"
 templ Container(props ContainerProps) {
 	switch utils.ResolveTag(props.Tag, "div", utils.TagGroupContainer) {
 		case "main":
-			<main class={ props.Class }>{ children... }</main>
+			<main class={ props.Class } { containerSpreadAttrs(props)... }>{ children... }</main>
 		case "section":
-			<section class={ props.Class }>{ children... }</section>
+			<section class={ props.Class } { containerSpreadAttrs(props)... }>{ children... }</section>
 		default:
-			<div class={ props.Class }>{ children... }</div>
+			<div class={ props.Class } { containerSpreadAttrs(props)... }>{ children... }</div>
 	}
 }

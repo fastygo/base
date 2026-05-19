@@ -3,12 +3,17 @@ package group_test
 import (
 	"testing"
 
+	"github.com/a-h/templ"
 	"github.com/fastygo/base/group"
 	"github.com/fastygo/base/internal/testutil"
 )
 
-func TestGroupDataGrow(t *testing.T) {
-	html := testutil.Render(t, group.Group(group.GroupProps{Class: "row", Grow: true}))
-	testutil.MustContain(t, html, `data-grow`)
+func TestGroupSpreadAttrs(t *testing.T) {
+	html := testutil.Render(t, group.Group(group.GroupProps{
+		Class: "row w-full",
+		Attrs: templ.Attributes{"data-test": "g"},
+	}))
+	testutil.MustContain(t, html, `data-test="g"`)
+	testutil.MustContain(t, html, `class="row w-full"`)
 	testutil.AssertHeadlessAtoms(t, html)
 }

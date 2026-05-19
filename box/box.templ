@@ -5,22 +5,22 @@ import "github.com/fastygo/base/utils"
 templ Box(props BoxProps) {
 	switch utils.ResolveTag(props.Tag, "div", utils.TagGroupLayout) {
 		case "section":
-			<section class={ props.Class }>{ children... }</section>
+			<section class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</section>
 		case "article":
-			<article class={ props.Class }>{ children... }</article>
+			<article class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</article>
 		case "aside":
-			<aside class={ props.Class }>{ children... }</aside>
+			<aside class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</aside>
 		case "header":
-			<header class={ props.Class }>{ children... }</header>
+			<header class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</header>
 		case "footer":
-			<footer class={ props.Class }>{ children... }</footer>
+			<footer class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</footer>
 		case "main":
-			<main class={ props.Class }>{ children... }</main>
+			<main class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</main>
 		case "nav":
-			<nav class={ props.Class }>{ children... }</nav>
+			<nav class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</nav>
 		case "figure":
-			<figure class={ props.Class }>{ children... }</figure>
+			<figure class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</figure>
 		default:
-			<div class={ props.Class }>{ children... }</div>
+			<div class={ props.Class } { boxSpreadAttrs(props)... }>{ children... }</div>
 	}
 }

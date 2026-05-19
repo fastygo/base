@@ -3,26 +3,26 @@ package list
 templ List(props ListProps) {
 	switch listTag(props.Tag) {
 		case "ol":
-			<ol class={ props.Class }>
+			<ol class={ props.Class } { listSpreadAttrs(props)... }>
 				{ children... }
 			</ol>
 		case "dl":
-			<dl class={ props.Class }>
+			<dl class={ props.Class } { listSpreadAttrs(props)... }>
 				{ children... }
 			</dl>
 		case "menu":
-			<menu class={ props.Class }>
+			<menu class={ props.Class } { listSpreadAttrs(props)... }>
 				{ children... }
 			</menu>
 		default:
-			<ul class={ props.Class }>
+			<ul class={ props.Class } { listSpreadAttrs(props)... }>
 				{ children... }
 			</ul>
 	}
 }
 
 templ ListItem(props ListItemProps) {
-	<li class={ props.Class } { listItemAttrs(props)... }>
+	<li class={ props.Class } { listItemMergedAttrs(props)... }>
 		{ children... }
 	</li>
 }

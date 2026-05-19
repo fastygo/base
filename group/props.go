@@ -1,7 +1,9 @@
 package group
 
+import "github.com/a-h/templ"
+
 type GroupProps struct {
 	Class string
 	Tag   string
-	Grow  bool
+	Attrs templ.Attributes
 }
